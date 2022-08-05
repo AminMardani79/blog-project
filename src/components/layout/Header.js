@@ -57,7 +57,9 @@ function Header({ window }) {
                     <MenuIcon />
                   </IconButton>
                 </Grid>
-                <Grid item>icon</Grid>
+                <Grid item sx={{ display: { xs: "none", sm: "block" } }}>
+                  icon
+                </Grid>
                 <Grid item sx={{ display: { xs: "none", sm: "block" } }}>
                   <Box>
                     <Stack direction="row">
@@ -110,10 +112,37 @@ function Header({ window }) {
                     "& .MuiDrawer-paper": {
                       boxSizing: "border-box",
                       width: "200px",
+                      backgroundColor: "#0d47a1",
                     },
                   }}
                 >
-                  <div>Hello</div>
+                  <Grid container alignItems="center" textAlign="center">
+                    <Grid item xs={12} my={2} textAlign="center" p={1}>
+                      icon
+                    </Grid>
+                    {menuItems.map((item) => {
+                      return (
+                        <Grid
+                          item
+                          xs={12}
+                          key={item.name}
+                          py={1}
+                          className={styles.mobileMenuItem}
+                        >
+                          <Link
+                            to={item.url}
+                            style={{
+                              textDecoration: "none",
+                              color: "#fff",
+                              display: "inline-block",
+                            }}
+                          >
+                            {item.name}
+                          </Link>
+                        </Grid>
+                      );
+                    })}
+                  </Grid>
                 </Drawer>
               </Box>
             </Toolbar>
