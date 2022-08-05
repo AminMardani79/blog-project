@@ -1,0 +1,12 @@
+@import './fonts.css';
+body {
+  overflow-x: hidden;
+  margin: 0;
+  font-family: IranYekan, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+}
+*{
+  box-sizing: border-box;
+}
+

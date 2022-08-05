@@ -1,0 +1,6 @@
+.menuItem{
+    transition: all .2s ease-in-out;
+}
+.menuItem:hover{
+    color: #a3d2f8 !important;
+}

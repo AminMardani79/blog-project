@@ -1,0 +1,41 @@
+@font-face {
+    font-family: IranYekan;
+    font-weight: 500;
+    src: url('../fonts/woff2/IRANYekanWebThin.woff2') format("woff2"),
+    url('../fonts/woff/IRANYekanWebThin.woff') format("woff"),
+    url('../fonts/ttf/IRANYekanWebThin.ttf') format("ttf"),
+    url('../fonts/eot/IRANYekanWebThin.eot') format("eot"),
+}
+@font-face {
+    font-family: IranYekan;
+    font-weight: 600;
+    src: url('../fonts/woff2/IRANYekanWebRegular.woff2') format("woff2"),
+    url('../fonts/woff/IRANYekanWebRegular.woff') format("woff"),
+    url('../fonts/ttf/IRANYekanWebRegular.ttf') format("ttf"),
+    url('../fonts/eot/IRANYekanWebRegular.eot') format("eot"),
+}
+
+@font-face {
+    font-family: IranYekan;
+    font-weight: 700;
+    src: url('../fonts/woff2/IRANYekanWebMedium.woff2') format("woff2"),
+    url('../fonts/woff/IRANYekanWebMedium.woff') format("woff"),
+    url('../fonts/ttf/IRANYekanWebMedium.ttf') format("ttf"),
+    url('../fonts/eot/IRANYekanWebMedium.eot') format("eot"),
+}
+@font-face {
+    font-family: IranYekan;
+    font-weight: 800;
+    src: url('../fonts/woff2/IRANYekanWebBold.woff2') format("woff2"),
+    url('../fonts/woff/IRANYekanWebBold.woff') format("woff"),
+    url('../fonts/ttf/IRANYekanWebBold.ttf') format("ttf"),
+    url('../fonts/eot/IRANYekanWebBold.eot') format("eot"),
+}
+@font-face {
+    font-family: IranYekan;
+    font-weight: 900;
+    src: url('../fonts/woff2/IRANYekanWebExtraBold.woff2') format("woff2"),
+    url('../fonts/woff/IRANYekanWebExtraBold.woff') format("woff"),
+    url('../fonts/ttf/IRANYekanWebExtraBold.ttf') format("ttf"),
+    url('../fonts/eot/IRANYekanWebExtraBold.eot') format("eot"),
+}
