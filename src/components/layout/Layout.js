@@ -1,13 +1,16 @@
+import { Box } from "@mui/material";
 import React from "react";
 import Footer from "./Footer";
-import Header from "./Header";
+import Header from "./header/Header";
 
 function Layout({ children }) {
   return (
     <>
-      <Header />
-      {children}
-      <Footer />
+      <Box>
+        <Header />
+        {children}
+        <Footer />
+      </Box>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 // components
 import {
   AppBar,
@@ -10,22 +10,23 @@ import {
   Typography,
   Stack,
   Grid,
-  Drawer,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 // icons
 import MenuIcon from "@mui/icons-material/Menu";
 import BookIcon from "@mui/icons-material/Book";
 // theme
-import { appBarTheme } from "../../mui/theme";
+import { appBarTheme } from "../../../mui/theme";
 // styles
-import styles from "../../assets/css/header.module.css";
+import styles from "../../../assets/css/header.module.css";
+import SideMenu from "./SideMenu";
 
 const menuItems = [
   { name: "صفحه اصلی", url: "/" },
-  { name: "مقالات", url: "/" },
-  { name: "نویسندگان", url: "/" },
-  { name: "ثبت مقاله", url: "/" },
+  { name: "مقالات", url: "/blogs" },
+  { name: "نویسندگان", url: "/authors" },
+  { name: "ثبت نویسنده", url: "/createAuthor" },
+  { name: "ثبت مقاله", url: "/createBlog" },
 ];
 
 function Header({ window }) {
@@ -56,9 +57,6 @@ function Header({ window }) {
                   >
                     <MenuIcon />
                   </IconButton>
-                </Grid>
-                <Grid item sx={{ display: { xs: "none", sm: "block" } }}>
-                  icon
                 </Grid>
                 <Grid item sx={{ display: { xs: "none", sm: "block" } }}>
                   <Box>
@@ -99,51 +97,12 @@ function Header({ window }) {
                 </Grid>
               </Grid>
               <Box component="nav">
-                <Drawer
+                <SideMenu
                   container={container}
-                  variant="temporary"
-                  open={mobileOpen}
-                  onClose={toggleMobileMenu}
-                  ModalProps={{
-                    keepMounted: true,
-                  }}
-                  sx={{
-                    display: { xs: "block", sm: "none" },
-                    "& .MuiDrawer-paper": {
-                      boxSizing: "border-box",
-                      width: "200px",
-                      backgroundColor: "#0d47a1",
-                    },
-                  }}
-                >
-                  <Grid container alignItems="center" textAlign="center">
-                    <Grid item xs={12} my={2} textAlign="center" p={1}>
-                      icon
-                    </Grid>
-                    {menuItems.map((item) => {
-                      return (
-                        <Grid
-                          item
-                          xs={12}
-                          key={item.name}
-                          py={1}
-                          className={styles.mobileMenuItem}
-                        >
-                          <Link
-                            to={item.url}
-                            style={{
-                              textDecoration: "none",
-                              color: "#fff",
-                              display: "inline-block",
-                            }}
-                          >
-                            {item.name}
-                          </Link>
-                        </Grid>
-                      );
-                    })}
-                  </Grid>
-                </Drawer>
+                  mobileOpen={mobileOpen}
+                  toggleMobileMenu={toggleMobileMenu}
+                  menuItems={menuItems}
+                />
               </Box>
             </Toolbar>
           </AppBar>

@@ -2,7 +2,6 @@ import { blue } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 const globalTheme = createTheme({
-  palette: {},
   typography: {
     fontFamily: `"IranYekan" , "Roboto" , "Arial"`,
     fontWeightLight: 500,
