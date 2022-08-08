@@ -1,13 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-const authorsSlice = createSlice({
-  name: "authors/getAuthors",
+
+const blogsSlice = createSlice({
+  name: "blogs",
   initialState: {
     loading: true,
     data: {},
     error: "",
   },
   reducers: {
-    getAuthors(state, { payload: { loading, data, error } }) {
+    getBlogs(state, { payload: { loading, data, error } }) {
       state.loading = loading;
       state.data = data;
       state.error = error;
@@ -15,5 +16,5 @@ const authorsSlice = createSlice({
   },
 });
 
-export const { getAuthors } = authorsSlice.actions;
-export default authorsSlice.reducer;
+export const { getBlogs } = blogsSlice.actions;
+export default blogsSlice.reducer;

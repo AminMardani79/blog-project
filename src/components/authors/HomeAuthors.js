@@ -15,7 +15,7 @@ const HomeAuthors = () => {
       {data && !error && !loading && (
         <Box
           sx={{
-            boxShadow: "2px 8px 13px 1px rgba(0,0,0,0.08)",
+            boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)",
             marginTop: 2,
             padding: 2,
           }}
@@ -46,7 +46,7 @@ const HomeAuthors = () => {
                         component="h3"
                         variant="h6"
                         fontWeight={600}
-                        fontSize="18px"
+                        fontSize="15px"
                       >
                         {author.name}
                       </Typography>
@@ -54,6 +54,7 @@ const HomeAuthors = () => {
                         component="h4"
                         variant="subtitle2"
                         fontWeight={400}
+                        fontSize="14px"
                       >
                         {author.field}
                       </Typography>
