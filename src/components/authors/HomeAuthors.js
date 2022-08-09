@@ -4,15 +4,17 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const HomeAuthors = () => {
-  const { loading, data, error } = useSelector((state) => state.authorsState);
+  const { authorsLoading, authors, authorError } = useSelector(
+    (state) => state.authorsState
+  );
   return (
     <>
       <Typography component="h2" variant="h6" fontWeight={500}>
         نویسندگان
       </Typography>
-      {loading && <div>Loading</div>}
-      {error && <div>Error</div>}
-      {data && !error && !loading && (
+      {authorsLoading && <div>Loading</div>}
+      {authorError && <div>Error</div>}
+      {authors && !authorError && !authorsLoading && (
         <Box
           sx={{
             boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)",
@@ -21,7 +23,7 @@ const HomeAuthors = () => {
           }}
         >
           <Grid container>
-            {data.authors.map((author, index) => {
+            {authors.authors.map((author, index) => {
               return (
                 <Grid item xs={12} key={author.id}>
                   <Stack
@@ -60,7 +62,7 @@ const HomeAuthors = () => {
                       </Typography>
                     </Link>
                   </Stack>
-                  {index !== data.authors.length - 1 && (
+                  {index !== authors.authors.length - 1 && (
                     <Divider variant="middle" />
                   )}
                 </Grid>

@@ -25,8 +25,10 @@ function App() {
   const blogs = useQuery(GET_BLOGS_INFO);
   useEffect(() => {
     dispatch(getAuthors(authors));
+  }, [authors]);
+  useEffect(() => {
     dispatch(getBlogs(blogs));
-  }, [authors, blogs]);
+  }, [blogs]);
   return (
     <Layout>
       <Box component="div" mt={8} py={4} sx={{ minHeight: "100vh" }}>

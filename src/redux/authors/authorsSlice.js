@@ -2,15 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 const authorsSlice = createSlice({
   name: "authors/getAuthors",
   initialState: {
-    loading: true,
-    data: {},
-    error: "",
+    authorsLoading: true,
+    authors: {},
+    authorError: "",
   },
   reducers: {
     getAuthors(state, { payload: { loading, data, error } }) {
-      state.loading = loading;
-      state.data = data;
-      state.error = error;
+      state.authorsLoading = loading;
+      state.authors = data;
+      state.authorError = error;
     },
   },
 });

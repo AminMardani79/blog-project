@@ -10,6 +10,7 @@ const globalTheme = createTheme({
     fontWeightBold: 800,
     fontWeightFat: 900,
   },
+  direction: "rtl",
 });
 const appBarTheme = createTheme({
   palette: {

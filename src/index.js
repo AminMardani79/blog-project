@@ -8,6 +8,8 @@ import { BrowserRouter } from "react-router-dom";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { CacheProvider } from "@emotion/react";
+import { cacheRtl } from "./mui/configRtl";
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHCMS_URI,
@@ -19,9 +21,11 @@ root.render(
   <ApolloProvider client={client}>
     <BrowserRouter>
       <ThemeProvider theme={globalTheme}>
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <CacheProvider value={cacheRtl}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </CacheProvider>
       </ThemeProvider>
     </BrowserRouter>
   </ApolloProvider>

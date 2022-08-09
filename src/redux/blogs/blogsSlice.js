@@ -3,15 +3,15 @@ import { createSlice } from "@reduxjs/toolkit";
 const blogsSlice = createSlice({
   name: "blogs",
   initialState: {
-    loading: true,
-    data: {},
-    error: "",
+    blogsLoading: true,
+    blogs: {},
+    blogsError: "",
   },
   reducers: {
     getBlogs(state, { payload: { loading, data, error } }) {
-      state.loading = loading;
-      state.data = data;
-      state.error = error;
+      state.blogsLoading = loading;
+      state.blogs = data;
+      state.blogsError = error;
     },
   },
 });
