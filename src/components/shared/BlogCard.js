@@ -14,16 +14,18 @@ function BlogCard({ post }) {
   const { slug, author, coverImage, title, content } = post;
   return (
     <Card sx={{ boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)" }}>
-      <Link
-        to={`/blog/${slug}`}
-        style={{ textDecoration: "none", color: "#000" }}
-      >
-        <CardHeader
-          avatar={<Avatar src={author.avatar.url} sx={{ marginLeft: 1 }} />}
-          title={author.name}
-          subheader={author.field}
-        />
-      </Link>
+      {author && (
+        <Link
+          to={`/blog/${slug}`}
+          style={{ textDecoration: "none", color: "#000" }}
+        >
+          <CardHeader
+            avatar={<Avatar src={author.avatar.url} sx={{ marginLeft: 1 }} />}
+            title={author.name}
+            subheader={author.field}
+          />
+        </Link>
+      )}
       <CardMedia
         component="img"
         height="194"
