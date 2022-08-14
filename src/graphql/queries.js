@@ -24,6 +24,7 @@ const GET_BLOGS_INFO = gql`
         }
         name
         field
+        slug
       }
       coverImage {
         url
@@ -91,4 +92,19 @@ const GET_BLOG_INFO = gql`
     }
   }
 `;
-export { GET_AUTHORS_INFO, GET_BLOGS_INFO, GET_AUTHOR_INFO, GET_BLOG_INFO };
+const GET_COMMENTS_INFO = gql`
+  query getComments($slug: String!) {
+    comments(where: { post: { slug: $slug } }) {
+      id
+      name
+      text
+    }
+  }
+`;
+export {
+  GET_AUTHORS_INFO,
+  GET_BLOGS_INFO,
+  GET_AUTHOR_INFO,
+  GET_BLOG_INFO,
+  GET_COMMENTS_INFO,
+};

@@ -16,7 +16,7 @@ function BlogCard({ post }) {
     <Card sx={{ boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)" }}>
       {author && (
         <Link
-          to={`/blog/${slug}`}
+          to={`/author/${author.slug}`}
           style={{ textDecoration: "none", color: "#000" }}
         >
           <CardHeader

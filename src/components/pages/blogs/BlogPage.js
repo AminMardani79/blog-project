@@ -1,16 +1,19 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { GET_BLOG_INFO } from "../../../graphql/queries";
 import sanitizeHtml from "sanitize-html";
 
 // components
 import { Box } from "@mui/system";
-import { Avatar, Grid, Stack, Typography } from "@mui/material";
+import { Avatar, Grid, IconButton, Stack, Typography } from "@mui/material";
 import CommentsForm from "./CommentsForm";
+import Comments from "./Comments";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
 function BlogPage() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const { loading, data, error } = useQuery(GET_BLOG_INFO, {
     variables: { slug },
   });
@@ -19,7 +22,12 @@ function BlogPage() {
   if (error) return <div>Error ...</div>;
   const { post } = data;
   return (
-    <Grid container spacing={1}>
+    <Grid container spacing={1} direction="column">
+      <Grid item xs={12} alignSelf="flex-end">
+        <IconButton onClick={() => navigate(-1)}>
+          <KeyboardBackspaceIcon />
+        </IconButton>
+      </Grid>
       <Grid item xs={12}>
         <Stack direction="row" alignItems="center">
           <Avatar
@@ -51,13 +59,11 @@ function BlogPage() {
           }}
         ></div>
       </Grid>
-      <Grid item xs={12} my={1}>
-        <Typography component="h2" variant="h5" fontWeight={700}>
-          افزودن کامنت
-        </Typography>
+      <Grid item xs={12} mb={3}>
+        <CommentsForm slug={slug} />
       </Grid>
       <Grid item xs={12}>
-        <CommentsForm slug={slug} />
+        <Comments slug={slug} />
       </Grid>
     </Grid>
   );

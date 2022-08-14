@@ -1,7 +1,14 @@
-import { Box, Button, TextField } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
+// components
+import { Box, Button, TextField, Typography } from "@mui/material";
+import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
+// react-toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// formik
 import { useFormik } from "formik";
 import * as yup from "yup";
+// apollo
 import { useMutation } from "@apollo/client";
 import { SEND_COMMENT } from "../../../graphql/mutations";
 const validationSchema = yup.object({
@@ -15,6 +22,7 @@ const validationSchema = yup.object({
     .required("متن پیام را وارد کنید"),
 });
 function CommentsForm({ slug }) {
+  const [pressed, setPressed] = useState(false);
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -22,11 +30,15 @@ function CommentsForm({ slug }) {
       message: "",
     },
     validationSchema: validationSchema,
-    onSubmit: () => {
+    onSubmit: (values) => {
       sendComment();
+      values.name = "";
+      values.email = "";
+      values.message = "";
+      setPressed(true);
     },
   });
-  const [sendComment, { loading, data }] = useMutation(SEND_COMMENT, {
+  const [sendComment, { loading, data, error }] = useMutation(SEND_COMMENT, {
     variables: {
       name: formik.values.name,
       email: formik.values.email,
@@ -34,10 +46,36 @@ function CommentsForm({ slug }) {
       slug,
     },
   });
-  console.log(formik.values.name, formik.values.email, formik.values.message);
-  console.log(loading, data);
+  useEffect(() => {
+    if (error && pressed) {
+      toast.error("ارسال پیام با مشکل مواجه شد", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setPressed(false);
+    }
+  }, [error]);
+  useEffect(() => {
+    if (data && pressed) {
+      toast.success("پیام ارسال شد و در انتظار تایید است", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }, [data]);
   return (
     <Box p={3} sx={{ boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)" }}>
+      <Typography component="h1" variant="h5" fontWeight={700} mb={2}>
+        افزودن پیام
+      </Typography>
       <form onSubmit={formik.handleSubmit}>
         <TextField
           id="name"
@@ -77,10 +115,16 @@ function CommentsForm({ slug }) {
           error={formik.touched.message && Boolean(formik.errors.message)}
           helperText={formik.touched.message && formik.errors.message}
         />
-        <Button color="primary" type="submit" variant="contained">
-          ارسال پیام
+        <Button
+          color="primary"
+          type="submit"
+          variant="contained"
+          disabled={loading}
+        >
+          {loading ? <HourglassBottomIcon /> : `ارسال پیام`}
         </Button>
       </form>
+      <ToastContainer />
     </Box>
   );
 }
