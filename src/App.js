@@ -6,7 +6,7 @@ import { GET_AUTHORS_INFO, GET_BLOGS_INFO } from "./graphql/queries";
 // components
 import Layout from "./components/layout/Layout";
 import Authors from "./components/pages/authors/Authors";
-import CreateAuthor from "./components/pages/authors/CreateAuthor";
+import CreateAuthor from "./components/pages/authors/createAuther/CreateAuthor";
 import Blogs from "./components/pages/blogs/Blogs";
 import { useEffect } from "react";
 // redux

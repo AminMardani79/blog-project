@@ -19,5 +19,25 @@ const SEND_COMMENT = gql`
     }
   }
 `;
-
-export { SEND_COMMENT };
+const CREATE_AUTHOR = gql`
+  mutation createAuthor(
+    $name: String!
+    $description: String!
+    $field: String!
+    $slug: String!
+    $fileName: String!
+  ) {
+    createAuthor(
+      data: {
+        name: $name
+        description: $description
+        field: $field
+        slug: $slug
+        avatar: { create: { fileName: $fileName } }
+      }
+    ) {
+      id
+    }
+  }
+`;
+export { SEND_COMMENT, CREATE_AUTHOR };
