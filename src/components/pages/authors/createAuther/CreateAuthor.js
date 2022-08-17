@@ -5,13 +5,8 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 // ck editor
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import Editor from "../../../shared/Editor";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-/* import Alignment from "@ckeditor/ckeditor5-alignment/src/alignment";
- */
-/* const editorConfiguration = {
-  plugins: [Alignment],
-}; */
+import { Box } from "@mui/system";
 
 const validationSchema = yup.object({
   name: yup.string("نام را وارد کنید").required("نام را وارد کنید"),
@@ -23,6 +18,7 @@ const validationSchema = yup.object({
 });
 
 const CreateAuthor = () => {
+  const [imageUrl, setImageUrl] = useState("");
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -34,6 +30,11 @@ const CreateAuthor = () => {
     validationSchema: validationSchema,
     onSubmit: (values) => {},
   });
+  const imageChangeHandler = (event) => {
+    const imageBlob = URL.createObjectURL(event.target.files[0]);
+    setImageUrl(imageBlob);
+  };
+  console.log(imageUrl);
   return (
     <Grid container>
       <Grid item xs={12} mb={2}>
@@ -68,6 +69,26 @@ const CreateAuthor = () => {
               console.log("Focus.", editor);
             }}
           />
+          <Box sx={{ marginBottom: 1, marginTop: 2 }}>
+            <label htmlFor="authorImage">
+              <Typography component="h2" variant="subtitle1" mb={1}>
+                تصویر نویسنده
+              </Typography>
+              <img
+                src={imageUrl}
+                alt="authorImage"
+                width="400"
+                height="300"
+                style={{ cursor: "pointer" }}
+              />
+            </label>
+            <input
+              type="file"
+              id="authorImage"
+              style={{ display: "none" }}
+              onChange={imageChangeHandler}
+            />
+          </Box>
         </form>
       </Grid>
     </Grid>

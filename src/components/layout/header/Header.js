@@ -25,8 +25,6 @@ const menuItems = [
   { name: "صفحه اصلی", url: "/" },
   { name: "مقالات", url: "/blogs" },
   { name: "نویسندگان", url: "/authors" },
-  { name: "ثبت نویسنده", url: "/createAuthor" },
-  { name: "ثبت مقاله", url: "/createBlog" },
 ];
 
 function Header({ window }) {
