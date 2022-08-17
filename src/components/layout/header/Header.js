@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 // components
 import {
   AppBar,
@@ -81,17 +81,20 @@ function Header({ window }) {
                   </Box>
                 </Grid>
                 <Grid item>
-                  <Stack direction="row" alignItems="center">
-                    <Typography
-                      component="h3"
-                      variant="h6"
-                      fontSize="17px"
-                      ml={1}
-                    >
-                      Blog
-                    </Typography>
-                    <BookIcon sx={{ fontSize: "20px" }} />
-                  </Stack>
+                  <Link to="/" style={{ textDecoration: "none" }}>
+                    <Stack direction="row" alignItems="center">
+                      <Typography
+                        component="h3"
+                        variant="h6"
+                        fontSize="17px"
+                        ml={1}
+                        sx={{ color: "#fff" }}
+                      >
+                        Blog
+                      </Typography>
+                      <BookIcon sx={{ fontSize: "20px", color: "#fff" }} />
+                    </Stack>
+                  </Link>
                 </Grid>
               </Grid>
               <Box component="nav">
