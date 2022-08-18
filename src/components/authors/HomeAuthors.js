@@ -2,19 +2,22 @@ import { Avatar, Box, Divider, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import HomeAuthorsLoading from "./HomeAuthorsLoader";
 
 const HomeAuthors = () => {
   const { authorsLoading, authors, authorError } = useSelector(
     (state) => state.authorsState
   );
+  if (authorsLoading) return <HomeAuthorsLoading />;
+  if (authorError) return <div>Error</div>;
   return (
-    <>
-      <Typography component="h2" variant="h6" fontWeight={500}>
-        نویسندگان
-      </Typography>
-      {authorsLoading && <div>Loading</div>}
-      {authorError && <div>Error</div>}
-      {authors && !authorError && !authorsLoading && (
+    authors &&
+    !authorError &&
+    !authorsLoading && (
+      <>
+        <Typography component="h2" variant="h6" fontWeight={500}>
+          نویسندگان
+        </Typography>
         <Box
           sx={{
             boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)",
@@ -70,8 +73,8 @@ const HomeAuthors = () => {
             })}
           </Grid>
         </Box>
-      )}
-    </>
+      </>
+    )
   );
 };
 

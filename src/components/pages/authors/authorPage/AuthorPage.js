@@ -1,13 +1,14 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { GET_AUTHOR_INFO } from "../../../graphql/queries";
+import { GET_AUTHOR_INFO } from "../../../../graphql/queries";
 import sanitizeHtml from "sanitize-html";
 // components
-import BlogCard from "../../shared/BlogCard";
+import BlogCard from "../../../shared/BlogCard";
 import { Avatar, Grid, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import AuthorPageLoader from "./AuthorPageLoader";
 
 function AuthorPage() {
   const { slug } = useParams();
@@ -15,7 +16,7 @@ function AuthorPage() {
   const { loading, data, error } = useQuery(GET_AUTHOR_INFO, {
     variables: { slug },
   });
-  if (loading) return <div>Loading ...</div>;
+  if (loading) return <AuthorPageLoader />;
   if (error) return <div>Error ...</div>;
   const { author } = data;
   return (

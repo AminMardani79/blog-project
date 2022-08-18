@@ -3,12 +3,13 @@ import { useSelector } from "react-redux";
 import React from "react";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
+import AuthorsLoader from "./AuthorsLoader";
 
 const Authors = () => {
   const { authorsLoading, authors, authorError } = useSelector(
     (state) => state.authorsState
   );
-  if (authorsLoading) return <div>Loading ...</div>;
+  if (authorsLoading) return <AuthorsLoader />;
   if (authorError) return <div>Error</div>;
   return (
     <Grid

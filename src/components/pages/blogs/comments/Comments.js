@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { Avatar, Box, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
-import { GET_COMMENTS_INFO } from "../../../graphql/queries";
+import { GET_COMMENTS_INFO } from "../../../../graphql/queries";
 
 const Comments = ({ slug }) => {
   const { loading, data, error } = useQuery(GET_COMMENTS_INFO, {

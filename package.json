@@ -4,9 +4,6 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "@ckeditor/ckeditor5-alignment": "^35.0.1",
-    "@ckeditor/ckeditor5-build-classic": "^35.0.1",
-    "@ckeditor/ckeditor5-react": "^5.0.2",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@mui/icons-material": "^5.8.4",
@@ -19,6 +16,7 @@
     "graphql": "^16.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.1.0",
     "react-material-ui-carousel": "^3.4.2",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",

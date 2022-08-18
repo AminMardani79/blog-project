@@ -10,7 +10,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 // apollo
 import { useMutation } from "@apollo/client";
-import { SEND_COMMENT } from "../../../graphql/mutations";
+import { SEND_COMMENT } from "../../../../graphql/mutations";
 const validationSchema = yup.object({
   name: yup.string("نام را وارد کنید").required("نام را وارد کنید"),
   email: yup

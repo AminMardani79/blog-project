@@ -1,15 +1,16 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { useNavigate, useParams } from "react-router-dom";
-import { GET_BLOG_INFO } from "../../../graphql/queries";
+import { GET_BLOG_INFO } from "../../../../graphql/queries";
 import sanitizeHtml from "sanitize-html";
 
 // components
 import { Box } from "@mui/system";
 import { Avatar, Grid, IconButton, Stack, Typography } from "@mui/material";
-import CommentsForm from "./CommentsForm";
-import Comments from "./Comments";
+import CommentsForm from "../comments/CommentsForm";
+import Comments from "../comments/Comments";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import BlogPageLoader from "./BlogPageLoader";
 
 function BlogPage() {
   const { slug } = useParams();
@@ -18,7 +19,7 @@ function BlogPage() {
     variables: { slug },
   });
 
-  if (loading) return <div>Loading ...</div>;
+  if (loading) return <BlogPageLoader />;
   if (error) return <div>Error ...</div>;
   const { post } = data;
   return (

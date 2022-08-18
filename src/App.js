@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 // apollo
 import { useQuery } from "@apollo/client";
 import { GET_AUTHORS_INFO, GET_BLOGS_INFO } from "./graphql/queries";
@@ -9,11 +9,11 @@ import { getAuthors } from "./redux/authors/authorsSlice";
 import { getBlogs } from "./redux/blogs/blogsSlice";
 // components
 import Layout from "./components/layout/Layout";
-import Authors from "./components/pages/authors/Authors";
-import Blogs from "./components/pages/blogs/Blogs";
+import Authors from "./components/pages/authors/authors/Authors";
+import Blogs from "./components/pages/blogs/blogs/Blogs";
 import Home from "./components/pages/home/Home";
-import AuthorPage from "./components/pages/authors/AuthorPage";
-import BlogPage from "./components/pages/blogs/BlogPage";
+import AuthorPage from "./components/pages/authors/authorPage/AuthorPage";
+import BlogPage from "./components/pages/blogs/blogPage/BlogPage";
 import ScrollToTop from "./components/shared/ScrollToTop";
 import { Box, Container } from "@mui/material";
 
@@ -38,6 +38,7 @@ function App() {
             <Route path="/authors" element={<Authors />} />
             <Route path="/authors/:slug" element={<AuthorPage />} />
             <Route path="/blogs/:slug" element={<BlogPage />} />
+            <Route path="/" element={<Navigate to="/home" replace />} />
           </Routes>
         </Container>
       </Box>

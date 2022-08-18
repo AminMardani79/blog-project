@@ -12,10 +12,11 @@ import { useSelector } from "react-redux";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 // functions
-import { filterPosts, pagesCount } from "../../../helper/functions";
+import { filterPosts, pagesCount } from "../../../../helper/functions";
 // components
-import AutoComplete from "../../blogs/AutoComplete";
-import BlogCard from "../../shared/BlogCard";
+import AutoComplete from "../../../blogs/AutoComplete";
+import BlogCard from "../../../shared/BlogCard";
+import BlogsLoader from "./BlogsLoader";
 
 const Blogs = () => {
   const { blogsLoading, blogs, blogsError } = useSelector(
@@ -36,7 +37,7 @@ const Blogs = () => {
   const fieldChange = (event) => {
     setField(event.target.value);
   };
-  if (blogsLoading) return <div>Loading ...</div>;
+  if (blogsLoading) return <BlogsLoader />;
   if (blogsError) return <div>Error ...</div>;
   return (
     <Grid container spacing={2} mt={2}>
