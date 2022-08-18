@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // components
 import {
   AppBar,
@@ -11,7 +11,7 @@ import {
   Stack,
   Grid,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // icons
 import MenuIcon from "@mui/icons-material/Menu";
 import BookIcon from "@mui/icons-material/Book";
@@ -21,19 +21,55 @@ import { appBarTheme } from "../../../mui/theme";
 import styles from "../../../assets/css/header.module.css";
 import SideMenu from "./SideMenu";
 
-const menuItems = [
-  { name: "صفحه اصلی", url: "/" },
-  { name: "مقالات", url: "/blogs" },
-  { name: "نویسندگان", url: "/authors" },
-];
-
 function Header({ window }) {
+  const home = useRef();
+  const blogs = useRef();
+  const authors = useRef();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeStyles, setActiveStyles] = useState({
+    width: "80px",
+    right: "187px",
+  });
+  const { pathname } = useLocation();
   const toggleMobileMenu = () => {
     setMobileOpen((prev) => !prev);
   };
   const container =
     window !== undefined ? () => window.document.body : undefined;
+  const menuItems = [
+    { name: "صفحه اصلی", url: "/", ref: home },
+    { name: "مقالات", url: "/blogs", ref: blogs },
+    { name: "نویسندگان", url: "/authors", ref: authors },
+  ];
+  useEffect(() => {
+    switch (pathname) {
+      case "/":
+        setActiveStyles((prev) => ({
+          ...prev,
+          width: `${home.current?.offsetWidth + 18}px`,
+          right: `${home.current?.offsetLeft - 9}px`,
+        }));
+        break;
+      case "/blogs":
+        setActiveStyles((prev) => ({
+          ...prev,
+          width: `${blogs.current?.offsetWidth + 18}px`,
+          right: `${blogs.current?.offsetLeft - 9}px`,
+        }));
+        break;
+      case "/authors":
+        setActiveStyles((prev) => ({
+          ...prev,
+          width: `${authors.current?.offsetWidth + 18}px`,
+          right: `${authors.current?.offsetLeft - 9}px`,
+        }));
+        break;
+      default:
+        setActiveStyles((prev) => ({
+          ...prev,
+        }));
+    }
+  }, [pathname]);
   return (
     <Box component="div">
       <Container maxWidth="lg">
@@ -57,19 +93,37 @@ function Header({ window }) {
                   </IconButton>
                 </Grid>
                 <Grid item sx={{ display: { xs: "none", sm: "block" } }}>
-                  <Box>
+                  <Box sx={{ position: "relative" }}>
                     <Stack direction="row">
+                      <Box
+                        component="span"
+                        sx={{
+                          position: "absolute",
+                          right: activeStyles.right,
+                          top: "50%",
+                          width: activeStyles.width,
+                          height: "30px",
+                          backgroundColor: "#fff",
+                          transform: "translateY(-50%)",
+                          borderRadius: "0 15px 0 15px",
+                          transition: "all .2s ease-in-out",
+                        }}
+                      ></Box>
                       {menuItems.map((item) => {
                         return (
                           <Link
+                            ref={item.ref}
                             key={item.name}
                             to={item.url}
                             style={{
-                              marginLeft: "10px",
-                              marginRight: "10px",
+                              marginLeft: "14px",
+                              marginRight: "14px",
                               textDecoration: "none",
-                              color: "#fff",
+                              color: `${
+                                item.url === pathname ? "#1565c0" : "#fff"
+                              }`,
                               display: "inline-block",
+                              zIndex: 100,
                             }}
                             className={styles.menuItem}
                           >
