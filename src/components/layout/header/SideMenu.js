@@ -29,7 +29,7 @@ const SideMenu = ({ container, mobileOpen, toggleMobileMenu, menuItems }) => {
     >
       <Grid container alignItems="center" textAlign="center">
         <Grid item xs={12} my={2} textAlign="center" p={1}>
-          <Link to="/" onClick={toggleMobileMenu}>
+          <Link to="/home" onClick={toggleMobileMenu}>
             <BookIcon sx={{ fontSize: "25px", color: "#fff" }} />
           </Link>
         </Grid>

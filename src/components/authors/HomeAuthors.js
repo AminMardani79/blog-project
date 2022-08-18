@@ -32,7 +32,7 @@ const HomeAuthors = () => {
                     alignItems="center"
                   >
                     <Link
-                      to={`/author/${author.slug}`}
+                      to={`/authors/${author.slug}`}
                       style={{ textDecoration: "none" }}
                     >
                       <Avatar
@@ -41,7 +41,7 @@ const HomeAuthors = () => {
                       />
                     </Link>
                     <Link
-                      to={`/author/${author.slug}`}
+                      to={`/authors/${author.slug}`}
                       style={{ textDecoration: "none", color: "#000" }}
                     >
                       <Typography

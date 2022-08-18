@@ -33,11 +33,11 @@ function App() {
       <Box component="div" mt={8} py={4} sx={{ minHeight: "100vh" }}>
         <Container>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/authors" element={<Authors />} />
-            <Route path="/author/:slug" element={<AuthorPage />} />
-            <Route path="/blog/:slug" element={<BlogPage />} />
+            <Route path="/authors/:slug" element={<AuthorPage />} />
+            <Route path="/blogs/:slug" element={<BlogPage />} />
           </Routes>
         </Container>
       </Box>

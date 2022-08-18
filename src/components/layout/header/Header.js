@@ -34,16 +34,14 @@ function Header({ window }) {
   const toggleMobileMenu = () => {
     setMobileOpen((prev) => !prev);
   };
-  const container =
-    window !== undefined ? () => window.document.body : undefined;
   const menuItems = [
-    { name: "صفحه اصلی", url: "/", ref: home },
+    { name: "صفحه اصلی", url: "/home", ref: home },
     { name: "مقالات", url: "/blogs", ref: blogs },
     { name: "نویسندگان", url: "/authors", ref: authors },
   ];
   useEffect(() => {
     switch (pathname) {
-      case "/":
+      case "/home":
         setActiveStyles((prev) => ({
           ...prev,
           width: `${home.current?.offsetWidth + 18}px`,
@@ -65,9 +63,23 @@ function Header({ window }) {
         }));
         break;
       default:
-        setActiveStyles((prev) => ({
-          ...prev,
-        }));
+        if (pathname.includes("/blogs")) {
+          setActiveStyles((prev) => ({
+            ...prev,
+            width: `${blogs.current?.offsetWidth + 18}px`,
+            right: `${blogs.current?.offsetLeft - 9}px`,
+          }));
+        } else if (pathname.includes("/authors")) {
+          setActiveStyles((prev) => ({
+            ...prev,
+            width: `${authors.current?.offsetWidth + 18}px`,
+            right: `${authors.current?.offsetLeft - 9}px`,
+          }));
+        } else {
+          setActiveStyles((prev) => ({
+            ...prev,
+          }));
+        }
     }
   }, [pathname]);
   return (
@@ -120,7 +132,7 @@ function Header({ window }) {
                               marginRight: "14px",
                               textDecoration: "none",
                               color: `${
-                                item.url === pathname ? "#1565c0" : "#fff"
+                                pathname.includes(item.url) ? "#1565c0" : "#fff"
                               }`,
                               display: "inline-block",
                               zIndex: 100,
@@ -135,7 +147,7 @@ function Header({ window }) {
                   </Box>
                 </Grid>
                 <Grid item>
-                  <Link to="/" style={{ textDecoration: "none" }}>
+                  <Link to="/home" style={{ textDecoration: "none" }}>
                     <Stack direction="row" alignItems="center">
                       <Typography
                         component="h3"
@@ -153,7 +165,6 @@ function Header({ window }) {
               </Grid>
               <Box component="nav">
                 <SideMenu
-                  container={container}
                   mobileOpen={mobileOpen}
                   toggleMobileMenu={toggleMobileMenu}
                   menuItems={menuItems}

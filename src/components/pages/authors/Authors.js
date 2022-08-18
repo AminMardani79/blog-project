@@ -24,7 +24,7 @@ const Authors = () => {
       </Grid>
       {authors.authors.map((author) => (
         <Grid item xs={12} sm={6} md={4} lg={3} key={author.id}>
-          <Link to={`/author/${author.slug}`}>
+          <Link to={`/authors/${author.slug}`}>
             <Card
               sx={{
                 boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)",
