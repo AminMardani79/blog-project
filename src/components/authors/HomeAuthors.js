@@ -26,6 +26,8 @@ const HomeAuthors = () => {
             boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)",
             marginTop: 2,
             padding: 2,
+            backgroundColor: "#fff",
+            borderRadius: "4px",
           }}
         >
           <Grid container>

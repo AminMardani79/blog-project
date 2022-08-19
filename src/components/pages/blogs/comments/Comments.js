@@ -12,7 +12,14 @@ const Comments = ({ slug }) => {
   if (error) return <div>Error ...</div>;
   const { comments } = data;
   return (
-    <Box p={3} sx={{ boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)" }}>
+    <Box
+      p={3}
+      sx={{
+        boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)",
+        backgroundColor: "#fff",
+        borderRadius: "4px",
+      }}
+    >
       <Grid container>
         <Grid item xs={12} mb={2}>
           <Stack direction="row" alignItems="center">

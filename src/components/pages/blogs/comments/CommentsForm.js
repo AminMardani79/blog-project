@@ -74,7 +74,14 @@ function CommentsForm({ slug }) {
     }
   }, [data]);
   return (
-    <Box p={3} sx={{ boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)" }}>
+    <Box
+      p={3}
+      sx={{
+        boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)",
+        backgroundColor: "#fff",
+        borderRadius: "4px",
+      }}
+    >
       <Stack direction="row" alignItems="center">
         <ArrowLeftIcon color="primary" sx={{ fontSize: 35 }} />
         <Typography component="h2" variant="h5" fontWeight={500}>

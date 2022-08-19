@@ -5,7 +5,11 @@ body {
   font-family: IranYekan, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
-}
+  background: rgb(215,231,249);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background: radial-gradient(circle, rgba(215,231,249,1) 14%, rgba(255,255,255,1) 90%);}
 *{
   box-sizing: border-box;
 }
