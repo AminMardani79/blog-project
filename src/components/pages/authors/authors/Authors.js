@@ -4,13 +4,14 @@ import React from "react";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
 import AuthorsLoader from "./AuthorsLoader";
+import RequestError from "../../../shared/RequestError";
 
 const Authors = () => {
   const { authorsLoading, authors, authorError } = useSelector(
     (state) => state.authorsState
   );
   if (authorsLoading) return <AuthorsLoader />;
-  if (authorError) return <div>Error</div>;
+  if (authorError) return <RequestError />;
   return (
     <Grid
       container

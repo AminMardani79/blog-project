@@ -11,6 +11,7 @@ import CommentsForm from "../comments/CommentsForm";
 import Comments from "../comments/Comments";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import BlogPageLoader from "./BlogPageLoader";
+import RequestError from "../../../shared/RequestError";
 
 function BlogPage() {
   const { slug } = useParams();
@@ -20,7 +21,7 @@ function BlogPage() {
   });
 
   if (loading) return <BlogPageLoader />;
-  if (error) return <div>Error ...</div>;
+  if (error) return <RequestError />;
   const { post } = data;
   return (
     <Grid container spacing={1} direction="column">

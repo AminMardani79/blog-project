@@ -2,6 +2,7 @@ import { Avatar, Box, Divider, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import RequestError from "../shared/RequestError";
 import HomeAuthorsLoading from "./HomeAuthorsLoader";
 
 const HomeAuthors = () => {
@@ -9,11 +10,9 @@ const HomeAuthors = () => {
     (state) => state.authorsState
   );
   if (authorsLoading) return <HomeAuthorsLoading />;
-  if (authorError) return <div>Error</div>;
+  if (authorError) return <RequestError />;
   return (
-    authors &&
-    !authorError &&
-    !authorsLoading && (
+    authors && (
       <>
         <Typography component="h2" variant="h6" fontWeight={500}>
           نویسندگان

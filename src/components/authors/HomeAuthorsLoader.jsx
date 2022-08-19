@@ -6,7 +6,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 const HomeAuthorsLoading = () => {
     return (
         <Grid container>
-            <Grid item={12} mb={3}>
+            <Grid item xs={12} mb={3}>
                 <Skeleton width="150px" height="30px"/>
             </Grid>
             <Grid container>

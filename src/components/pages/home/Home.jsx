@@ -1,5 +1,5 @@
-import { Grid } from "@mui/material";
 import React from "react";
+import { Grid } from "@mui/material";
 import HomeAuthors from "../../authors/HomeAuthors";
 import HomeBlogs from "../../blogs/HomeBlogs";
 import HomeCarousel from "../../carousel/HomeCarousel";

@@ -16,6 +16,7 @@ import AuthorPage from "./components/pages/authors/authorPage/AuthorPage";
 import BlogPage from "./components/pages/blogs/blogPage/BlogPage";
 import ScrollToTop from "./components/shared/ScrollToTop";
 import { Box, Container } from "@mui/material";
+import NotFound from "./components/shared/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,21 +29,24 @@ function App() {
     dispatch(getBlogs(blogs));
   }, [blogs]);
   return (
-    <Layout>
-      <ScrollToTop />
-      <Box component="div" mt={8} py={4} sx={{ minHeight: "100vh" }}>
-        <Container>
-          <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/authors" element={<Authors />} />
-            <Route path="/authors/:slug" element={<AuthorPage />} />
-            <Route path="/blogs/:slug" element={<BlogPage />} />
-            <Route path="/" element={<Navigate to="/home" replace />} />
-          </Routes>
-        </Container>
-      </Box>
-    </Layout>
+    <>
+      <Layout>
+        <ScrollToTop />
+        <Box component="div" mt={8} py={4} sx={{ minHeight: "100vh" }}>
+          <Container>
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/blogs" element={<Blogs />} />
+              <Route path="/authors" element={<Authors />} />
+              <Route path="/authors/:slug" element={<AuthorPage />} />
+              <Route path="/blogs/:slug" element={<BlogPage />} />
+              <Route path="/" element={<Navigate to="/home" replace />} />
+              <Route path="*" element={<Navigate to="/home" replace />} />
+            </Routes>
+          </Container>
+        </Box>
+      </Layout>
+    </>
   );
 }
 

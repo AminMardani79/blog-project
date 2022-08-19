@@ -17,6 +17,7 @@ import { filterPosts, pagesCount } from "../../../../helper/functions";
 import AutoComplete from "../../../blogs/AutoComplete";
 import BlogCard from "../../../shared/BlogCard";
 import BlogsLoader from "./BlogsLoader";
+import RequestError from "../../../shared/RequestError";
 
 const Blogs = () => {
   const { blogsLoading, blogs, blogsError } = useSelector(
@@ -38,7 +39,7 @@ const Blogs = () => {
     setField(event.target.value);
   };
   if (blogsLoading) return <BlogsLoader />;
-  if (blogsError) return <div>Error ...</div>;
+  if (blogsError) return <RequestError />;
   return (
     <Grid container spacing={2} mt={2}>
       <Grid

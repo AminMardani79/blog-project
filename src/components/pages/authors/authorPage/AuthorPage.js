@@ -9,6 +9,7 @@ import { Avatar, Grid, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import AuthorPageLoader from "./AuthorPageLoader";
+import RequestError from "../../../shared/RequestError";
 
 function AuthorPage() {
   const { slug } = useParams();
@@ -17,7 +18,7 @@ function AuthorPage() {
     variables: { slug },
   });
   if (loading) return <AuthorPageLoader />;
-  if (error) return <div>Error ...</div>;
+  if (error) return <RequestError />;
   const { author } = data;
   return (
     <Grid container direction="column" alignItems="center" spacing={3}>
