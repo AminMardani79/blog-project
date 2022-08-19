@@ -5,11 +5,12 @@ import { GET_AUTHOR_INFO } from "../../../../graphql/queries";
 import sanitizeHtml from "sanitize-html";
 // components
 import BlogCard from "../../../shared/BlogCard";
-import { Avatar, Grid, Typography } from "@mui/material";
+import { Avatar, Grid, Stack, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import AuthorPageLoader from "./AuthorPageLoader";
 import RequestError from "../../../shared/RequestError";
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 
 function AuthorPage() {
   const { slug } = useParams();
@@ -50,9 +51,12 @@ function AuthorPage() {
         ></div>
       </Grid>
       <Grid item xs={12}>
-        <Typography component="h1" variant="h5" fontWeight={500} mb={2}>
-          مقالات نویسنده
-        </Typography>
+        <Stack direction="row" alignItems="center" mb={3}>
+          <ArrowLeftIcon color="primary" sx={{ fontSize: 30 }} />
+          <Typography component="h2" variant="h5" fontWeight={500}>
+            مقالات نویسنده
+          </Typography>
+        </Stack>
         <Grid container spacing={3}>
           {author.posts.map((post) => (
             <Grid item xs={12} sm={6} md={4} key={post.id}>

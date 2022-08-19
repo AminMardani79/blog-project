@@ -1,9 +1,10 @@
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Typography, Box, Stack } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import BlogCard from "../shared/BlogCard";
 import RequestError from "../shared/RequestError";
 import HomeBlogsLoader from "./HomeBlogsLoader";
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 
 function HomeBlogs() {
   const { blogsLoading, blogs, blogsError } = useSelector(
@@ -14,9 +15,12 @@ function HomeBlogs() {
   return (
     blogs && (
       <>
-        <Typography component="h2" variant="h6" fontWeight={500}>
-          آخرین مقالات
-        </Typography>
+        <Stack direction="row" alignItems="center">
+          <ArrowLeftIcon color="primary" sx={{ fontSize: 30 }} />
+          <Typography component="h2" variant="h6" fontWeight={500}>
+            مقالات
+          </Typography>
+        </Stack>
         <Box sx={{ marginTop: 2 }}>
           <Grid container spacing={3}>
             {blogs.posts

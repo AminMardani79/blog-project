@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import RequestError from "../shared/RequestError";
 import HomeAuthorsLoading from "./HomeAuthorsLoader";
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 
 const HomeAuthors = () => {
   const { authorsLoading, authors, authorError } = useSelector(
@@ -14,9 +15,12 @@ const HomeAuthors = () => {
   return (
     authors && (
       <>
-        <Typography component="h2" variant="h6" fontWeight={500}>
-          نویسندگان
-        </Typography>
+        <Stack direction="row" alignItems="center">
+          <ArrowLeftIcon color="primary" sx={{ fontSize: 30 }} />
+          <Typography component="h2" variant="h6" fontWeight={500}>
+            نویسندگان
+          </Typography>
+        </Stack>
         <Box
           sx={{
             boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)",

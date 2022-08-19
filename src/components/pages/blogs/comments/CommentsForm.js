@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 // components
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+
 // react-toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -73,9 +75,12 @@ function CommentsForm({ slug }) {
   }, [data]);
   return (
     <Box p={3} sx={{ boxShadow: "0px 5px 13px -6px rgba(0,0,0,0.45)" }}>
-      <Typography component="h1" variant="h5" fontWeight={700} mb={2}>
-        افزودن پیام
-      </Typography>
+      <Stack direction="row" alignItems="center">
+        <ArrowLeftIcon color="primary" sx={{ fontSize: 35 }} />
+        <Typography component="h2" variant="h5" fontWeight={500}>
+          ارسال نظر
+        </Typography>
+      </Stack>
       <form onSubmit={formik.handleSubmit}>
         <TextField
           id="name"

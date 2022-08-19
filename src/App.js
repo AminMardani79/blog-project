@@ -16,7 +16,6 @@ import AuthorPage from "./components/pages/authors/authorPage/AuthorPage";
 import BlogPage from "./components/pages/blogs/blogPage/BlogPage";
 import ScrollToTop from "./components/shared/ScrollToTop";
 import { Box, Container } from "@mui/material";
-import NotFound from "./components/shared/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +31,13 @@ function App() {
     <>
       <Layout>
         <ScrollToTop />
-        <Box component="div" mt={8} py={4} sx={{ minHeight: "100vh" }}>
+        <Box
+          className="content_container"
+          component="div"
+          mt={8}
+          py={4}
+          sx={{ minHeight: "100vh" }}
+        >
           <Container>
             <Routes>
               <Route path="/home" element={<Home />} />
