@@ -47,19 +47,32 @@ function BlogPage() {
         </Stack>
       </Grid>
       <Grid item xs={12}>
-        <img src={post.coverImage.url} alt={slug} width="100%" height="600px" />
+        <img src={post.coverImage.url} alt={slug} width="100%" />
       </Grid>
       <Grid item xs={12}>
-        <Typography component="h2" variant="h5" fontWeight={700}>
+        <Typography
+          component="h2"
+          variant="h5"
+          sx={{ fontSize: { xs: 20, sm: 22 } }}
+          fontWeight={700}
+        >
           {post.title}
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: sanitizeHtml(post.content.html),
-          }}
-        ></div>
+        <Typography
+          component="p"
+          variant="subtitle1"
+          textAlign="center"
+          fontSize={15}
+          fontWeight={400}
+        >
+          <div
+            dangerouslySetInnerHTML={{
+              __html: sanitizeHtml(post.content.html),
+            }}
+          ></div>
+        </Typography>
       </Grid>
       <Grid item xs={12} mb={3}>
         <CommentsForm slug={slug} />

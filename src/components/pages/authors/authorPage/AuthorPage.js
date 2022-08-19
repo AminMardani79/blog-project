@@ -29,7 +29,10 @@ function AuthorPage() {
         </IconButton>
       </Grid>
       <Grid item xs={12}>
-        <Avatar src={author.avatar.url} sx={{ width: 400, height: 400 }} />
+        <Avatar
+          src={author.avatar.url}
+          sx={{ width: { xs: 250, sm: 400 }, height: { xs: 250, sm: 400 } }}
+        />
       </Grid>
       <Grid
         item
@@ -44,11 +47,19 @@ function AuthorPage() {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: sanitizeHtml(author.description.html),
-          }}
-        ></div>
+        <Typography
+          component="p"
+          variant="subtitle1"
+          textAlign="center"
+          fontSize={15}
+          fontWeight={400}
+        >
+          <div
+            dangerouslySetInnerHTML={{
+              __html: sanitizeHtml(author.description.html),
+            }}
+          ></div>
+        </Typography>
       </Grid>
       <Grid item xs={12}>
         <Stack direction="row" alignItems="center" mb={3}>
