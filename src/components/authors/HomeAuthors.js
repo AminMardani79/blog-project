@@ -45,7 +45,7 @@ const HomeAuthors = () => {
                     >
                       <Avatar
                         src={author.avatar.url}
-                        sx={{ marginLeft: 1, width: "50px", height: "50px" }}
+                        sx={{ marginRight: 1, width: "50px", height: "50px" }}
                       />
                     </Link>
                     <Link
