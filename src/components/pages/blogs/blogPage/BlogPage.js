@@ -63,7 +63,6 @@ function BlogPage() {
         <Typography
           component="p"
           variant="subtitle1"
-          textAlign="center"
           fontSize={15}
           fontWeight={400}
         >
