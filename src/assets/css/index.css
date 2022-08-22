@@ -17,3 +17,16 @@ body {
 .ck-editor__editable_inline {
   min-height: 400px;
 }
+.blogPoster{
+  height: 600px;
+}
+@media screen and (max-width:600px) {
+  .blogPoster{
+    height: 400px;
+  }
+}
+@media screen and (max-width:492px) {
+  .blogPoster{
+    height: 300px;
+  }
+}

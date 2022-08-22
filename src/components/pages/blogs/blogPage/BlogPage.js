@@ -47,7 +47,12 @@ function BlogPage() {
         </Stack>
       </Grid>
       <Grid item xs={12}>
-        <img src={post.coverImage.url} alt={slug} width="100%" />
+        <img
+          className="blogPoster"
+          src={post.coverImage.url}
+          alt={slug}
+          width="100%"
+        />
       </Grid>
       <Grid item xs={12}>
         <Typography
